@@ -13,4 +13,9 @@ UCLASS()
 class HOICHOTETCUAHUY_API AHCT_PlayerController_Base : public APlayerController
 {
 	GENERATED_BODY()
+	
+	AHCT_PlayerController_Base();
+	
+public:
+	virtual void BeginPlay() override;
 };

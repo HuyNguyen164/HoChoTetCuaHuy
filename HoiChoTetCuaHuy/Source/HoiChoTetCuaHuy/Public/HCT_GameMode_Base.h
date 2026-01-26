@@ -13,4 +13,9 @@ UCLASS()
 class HOICHOTETCUAHUY_API AHCT_GameMode_Base : public AGameModeBase
 {
 	GENERATED_BODY()
+
+public:
+	AHCT_GameMode_Base();
+	
+	virtual void BeginPlay() override;
 };

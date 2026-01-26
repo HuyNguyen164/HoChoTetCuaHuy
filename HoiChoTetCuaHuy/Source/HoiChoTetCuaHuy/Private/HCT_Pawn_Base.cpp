@@ -16,6 +16,8 @@ void AHCT_Pawn_Base::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	UE_LOG(LogTemp, Warning, TEXT("Bat dau xai Pawn HoiChoTet"));
+	
 }
 
 // Called every frame

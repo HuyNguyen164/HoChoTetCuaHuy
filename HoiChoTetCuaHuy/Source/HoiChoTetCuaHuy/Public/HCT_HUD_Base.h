@@ -13,4 +13,9 @@ UCLASS()
 class HOICHOTETCUAHUY_API AHCT_HUD_Base : public AHUD
 {
 	GENERATED_BODY()
+	
+	AHCT_HUD_Base();
+	
+public:
+	virtual void BeginPlay() override;
 };
