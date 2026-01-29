@@ -3,6 +3,8 @@
 
 #include "HoiChoTetCuaHuy/Public/HCT_Pawn_Base.h"
 
+#include "HoiChoTetCuaHuy/HoiChoTetCuaHuy.h"
+
 
 // Sets default values
 AHCT_Pawn_Base::AHCT_Pawn_Base()
@@ -16,7 +18,7 @@ void AHCT_Pawn_Base::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	UE_LOG(LogTemp, Warning, TEXT("Bat dau xai Pawn HoiChoTet"));
+	UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("Bat dau xai Pawn HoiChoTet"));
 	
 }
 

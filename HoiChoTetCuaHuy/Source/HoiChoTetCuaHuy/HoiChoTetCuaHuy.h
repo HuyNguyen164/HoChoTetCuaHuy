@@ -4,3 +4,5 @@
 
 #include "CoreMinimal.h"
 
+// Add new log
+DECLARE_LOG_CATEGORY_EXTERN(LogHoiChoTetCuaHuy, Log, All);
