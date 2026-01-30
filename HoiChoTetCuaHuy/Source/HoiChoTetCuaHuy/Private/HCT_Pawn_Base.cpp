@@ -2,7 +2,7 @@
 
 
 #include "HCT_Pawn_Base.h"
-#include "EnhancedInputSubsystems.h"
+// #include "EnhancedInputSubsystems.h"
 #include "HoiChoTetCuaHuy/HoiChoTetCuaHuy.h"
 
 
@@ -23,20 +23,20 @@ void AHCT_Pawn_Base::BeginPlay()
 	
 	UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("Bat dau xai Pawn HoiChoTet"));
 	
-	// Add Input Mapping Context
-	APlayerController* PC = Cast<APlayerController>(GetController());
-	if (!PC) return;
+//	// Add Input Mapping Context
+//	APlayerController* PC = Cast<APlayerController>(GetController());
+//	if (!PC) return;
 
-	ULocalPlayer* LocalPlayer = PC->GetLocalPlayer();
-	if (!LocalPlayer) return;
+//	ULocalPlayer* LocalPlayer = PC->GetLocalPlayer();
+//	if (!LocalPlayer) return;
 
-	UEnhancedInputLocalPlayerSubsystem* InputSubsystem =
-		LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
+//	UEnhancedInputLocalPlayerSubsystem* InputSubsystem =
+//		LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
 
-	if (InputSubsystem && IMC_Base)
-	{
-		InputSubsystem->AddMappingContext(IMC_Base, 0);
-	}
+//	if (InputSubsystem && IMC_Base)
+//	{
+//		InputSubsystem->AddMappingContext(IMC_Base, 0);
+//	}
 }
 
 // Called every frame

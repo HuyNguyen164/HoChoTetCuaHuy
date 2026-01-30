@@ -21,14 +21,14 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	UInputMappingContext* IMC_Base;
+//	UPROPERTY(EditDefaultsOnly, Category = "Input")
+//	UInputMappingContext* IMC_Base;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	UInputAction* IA_Move;
+//	UPROPERTY(EditDefaultsOnly, Category = "Input")
+//	UInputAction* IA_Move;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	UInputAction* IA_LookAround;
+//	UPROPERTY(EditDefaultsOnly, Category = "Input")
+//	UInputAction* IA_LookAround;
 
 public:
 	// Called every frame

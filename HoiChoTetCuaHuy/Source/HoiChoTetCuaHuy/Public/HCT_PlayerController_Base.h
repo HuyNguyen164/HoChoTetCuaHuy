@@ -6,6 +6,9 @@
 #include "GameFramework/PlayerController.h"
 #include "HCT_PlayerController_Base.generated.h"
 
+class UInputMappingContext;
+class UInputAction;
+
 /**
  * 
  */
@@ -16,6 +19,17 @@ class HOICHOTETCUAHUY_API AHCT_PlayerController_Base : public APlayerController
 	
 	AHCT_PlayerController_Base();
 	
-public:
+protected:
 	virtual void BeginPlay() override;
+	
+	// Khai bao Input Mapping Context va Input Action
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputMappingContext* IMC_Base;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* IA_Move;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* IA_LookAround;
+
 };
