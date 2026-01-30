@@ -18,4 +18,10 @@ class HOICHOTETCUAHUY_API AHCT_HUD_Base : public AHUD
 	
 public:
 	virtual void BeginPlay() override;
+
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UUserWidget> TitleGameWidgetClass;
+
+	UPROPERTY()
+	UUserWidget* TitleGameWidget;
 };
