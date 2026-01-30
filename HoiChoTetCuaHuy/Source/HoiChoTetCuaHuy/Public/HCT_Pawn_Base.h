@@ -6,6 +6,9 @@
 #include "GameFramework/Pawn.h"
 #include "HCT_Pawn_Base.generated.h"
 
+class UInputMappingContext;
+class UInputAction;
+
 UCLASS()
 class HOICHOTETCUAHUY_API AHCT_Pawn_Base : public APawn
 {
@@ -16,8 +19,16 @@ public:
 	AHCT_Pawn_Base();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputMappingContext* IMC_Base;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* IA_Move;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* IA_LookAround;
 
 public:
 	// Called every frame
