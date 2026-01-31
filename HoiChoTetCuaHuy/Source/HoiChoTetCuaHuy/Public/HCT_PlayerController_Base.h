@@ -31,5 +31,5 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	UInputAction* IA_LookAround;
-
+	
 };

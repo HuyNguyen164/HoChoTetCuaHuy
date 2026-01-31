@@ -24,5 +24,4 @@ void AHCT_PlayerController_Base::BeginPlay()
 		}
 	}
 	
-	UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("PlayerController da dung IMC_Base"));
 }
