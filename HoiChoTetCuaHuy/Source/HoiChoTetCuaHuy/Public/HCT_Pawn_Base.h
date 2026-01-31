@@ -5,7 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 
-#include "GameplayTagContainer.h"
+//#include "GameplayTagContainer.h"
+//#include "GameplayTagAssetInterface.h"
 
 #include "HCT_Pawn_Base.generated.h"
 
@@ -21,13 +22,13 @@ public:
 	// Sets default values for this pawn's properties
 	AHCT_Pawn_Base();
 	
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Gameplay Tags")
-	FGameplayTagContainer GameplayTags;
-
-	virtual void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const override
-	{
-		TagContainer = GameplayTags;
-	}
+//	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Gameplay Tags")
+//	FGameplayTagContainer GameplayTags;
+//
+//	virtual void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const override
+//	{
+//		TagContainer = GameplayTags;
+//	}
 
 protected:
 	virtual void BeginPlay() override;
