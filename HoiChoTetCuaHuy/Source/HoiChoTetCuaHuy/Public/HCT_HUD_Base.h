@@ -20,7 +20,7 @@ public:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
-	TSubclassOf<class UUserWidget> TitleGameWidgetClass;
+	TSubclassOf<class UUserWidget> WidgetIngameClass;
 
 	UPROPERTY()
 	UUserWidget* TitleGameWidget;
