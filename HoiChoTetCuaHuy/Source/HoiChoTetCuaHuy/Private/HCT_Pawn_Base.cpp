@@ -2,7 +2,7 @@
 
 
 #include "HCT_Pawn_Base.h"
-// #include "EnhancedInputSubsystems.h"
+
 #include "HoiChoTetCuaHuy/HoiChoTetCuaHuy.h"
 
 
@@ -11,9 +11,21 @@ AHCT_Pawn_Base::AHCT_Pawn_Base()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	// Root
+	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	RootComponent = Root;
+	
+	// Cho phep xoay theo huong camera
+	bUseControllerRotationYaw = true;
 	
 	// Cho phep dieu khien bang Player 0
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
+}
+
+void AHCT_Pawn_Base::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
 // Called when the game starts or when spawned
@@ -21,33 +33,17 @@ void AHCT_Pawn_Base::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("Bat dau xai Pawn HoiChoTet"));
+	//Debug
+	UE_LOG(LogHoiChoTetCuaHuy, Warning,
+	TEXT("Pawn BeginPlay | Controller = %s"),
+	Controller ? *Controller->GetName() : TEXT("NULL"));
 	
-//	// Add Input Mapping Context
-//	APlayerController* PC = Cast<APlayerController>(GetController());
-//	if (!PC) return;
-
-//	ULocalPlayer* LocalPlayer = PC->GetLocalPlayer();
-//	if (!LocalPlayer) return;
-
-//	UEnhancedInputLocalPlayerSubsystem* InputSubsystem =
-//		LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
-
-//	if (InputSubsystem && IMC_Base)
-//	{
-//		InputSubsystem->AddMappingContext(IMC_Base, 0);
-//	}
+	UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("Bat dau xai Pawn HoiChoTet"));
 }
 
 // Called every frame
 void AHCT_Pawn_Base::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-}
 
-// Called to bind functionality to input
-void AHCT_Pawn_Base::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
-

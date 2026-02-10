@@ -5,13 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 
-//#include "GameplayTagContainer.h"
-//#include "GameplayTagAssetInterface.h"
-
 #include "HCT_Pawn_Base.generated.h"
 
 class UInputMappingContext;
 class UInputAction;
+class UFloatingPawnMovement;
 
 UCLASS()
 class HOICHOTETCUAHUY_API AHCT_Pawn_Base : public APawn
@@ -21,22 +19,17 @@ class HOICHOTETCUAHUY_API AHCT_Pawn_Base : public APawn
 public:
 	// Sets default values for this pawn's properties
 	AHCT_Pawn_Base();
-	
-//	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Gameplay Tags")
-//	FGameplayTagContainer GameplayTags;
-//
-//	virtual void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const override
-//	{
-//		TagContainer = GameplayTags;
-//	}
 
 protected:
 	virtual void BeginPlay() override;
-
+	
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+	
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* Root;
+	
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 };

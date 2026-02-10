@@ -7,3 +7,4 @@ IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, HoiChoTetCuaHuy, "HoiChoT
 
 // Define new log
 DEFINE_LOG_CATEGORY(LogHoiChoTetCuaHuy);
+DEFINE_LOG_CATEGORY(LogTick);

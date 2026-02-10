@@ -1,7 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "HoiChoTetCuaHuy/Public/HCT_PlayerController_Base.h"
+#include "HCT_PlayerController_Base.h"
+
+#include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "HoiChoTetCuaHuy/HoiChoTetCuaHuy.h"
 
@@ -13,15 +15,53 @@ void AHCT_PlayerController_Base::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("Bat dau xai PlayerController HoiChoTet"));
-	
-	// Them Input Mapping Context
-	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+	//Debug
+	UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("IMC added"));
+}
+
+void AHCT_PlayerController_Base::OnPossess(APawn* InPawn)
+{
+	Super::OnPossess(InPawn);
+
+	if (ULocalPlayer* LocalPlayer = GetLocalPlayer())
 	{
-		if (IMC_Base)
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem =
+			LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
 		{
-			Subsystem->AddMappingContext(IMC_Base, 0);
+			Subsystem->ClearAllMappings();
+
+			if (IMC_Base)
+			{
+				Subsystem->AddMappingContext(IMC_Base, 0);
+				UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("IMC added (OnPossess)"));
+			}
 		}
 	}
-	
 }
+
+void AHCT_PlayerController_Base::SetupInputComponent()
+{
+	Super::SetupInputComponent();
+
+	if (UEnhancedInputComponent* EIC =
+		Cast<UEnhancedInputComponent>(InputComponent))
+	{
+		if (IA_LookAround)
+		{
+			EIC->BindAction(
+				IA_LookAround,
+				ETriggerEvent::Triggered,
+				this,
+				&AHCT_PlayerController_Base::LookAround
+			);
+		}
+	}
+}
+
+void AHCT_PlayerController_Base::LookAround(const FInputActionValue& Value)
+  {
+  	const FVector2D LookAxisValue = Value.Get<FVector2D>();	
+  	
+  	AddYawInput(LookAxisValue.X);
+  	AddPitchInput(LookAxisValue.Y);
+  }
