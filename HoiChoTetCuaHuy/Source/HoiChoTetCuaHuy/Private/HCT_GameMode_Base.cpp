@@ -9,8 +9,13 @@
 
 AHCT_GameMode_Base::AHCT_GameMode_Base()
 {
+	// Set default PlayerController class
 	PlayerControllerClass = AHCT_PlayerController_Base::StaticClass();
+	
+	// Set default Pawn class
 	DefaultPawnClass = AHCT_PlayerController_Base::StaticClass();
+	
+	// Set default HUD class
 	HUDClass = AHCT_HUD_Base::StaticClass();
 }
 

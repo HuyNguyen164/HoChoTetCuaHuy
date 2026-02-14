@@ -1,15 +1,15 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "InputActionValue.h"
 
 #include "HCT_Pawn_Base.generated.h"
 
-class UInputMappingContext;
-class UInputAction;
+class UCapsuleComponent;
 class UFloatingPawnMovement;
+class UInputAction;
+class UEnhancedInputComponent;
 
 UCLASS()
 class HOICHOTETCUAHUY_API AHCT_Pawn_Base : public APawn
@@ -23,13 +23,24 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	
-	// Called to bind functionality to input
+	// Override this function to bind input actions and axes
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	
-	UPROPERTY(VisibleAnywhere)
-	USceneComponent* Root;
+	// Input function for movement using Enhanced Input System
+	void Move(const FInputActionValue& Value);
+	
+	// Component: Capsule Collider
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components")
+	UCapsuleComponent* Capsule;
 	
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	
+private:
+	UPROPERTY(EditDefaultsOnly, Category="Input")
+	UInputAction* MoveAction;
+	
+	UPROPERTY(VisibleAnywhere)
+	UFloatingPawnMovement* FloatingMovement;
 };

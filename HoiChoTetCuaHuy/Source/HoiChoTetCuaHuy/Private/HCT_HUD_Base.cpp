@@ -16,6 +16,7 @@ void AHCT_HUD_Base::BeginPlay()
 	
 	UE_LOG(LogHoiChoTetCuaHuy, Warning, TEXT("Bat dau xai HUD HoiChoTet"));
 	
+	// Create and add the in-game widget to the viewport
 	if (WidgetIngameClass)
 	{
 		TitleGameWidget = CreateWidget<UUserWidget>(

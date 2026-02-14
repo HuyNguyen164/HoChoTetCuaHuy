@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -30,8 +28,8 @@ protected:
 	
 	// Khai bao Input Mapping Context va Input Action
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	UInputMappingContext* IMC_Base;
+	UInputMappingContext* DefaultInputMappingContext;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	UInputAction* IA_LookAround;
+	UInputAction* LookInputAction;
 };
