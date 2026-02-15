@@ -15,7 +15,15 @@ AHCT_Pawn_Base::AHCT_Pawn_Base()
 
 	// Tao Capsule Component lam Root Component
 	Capsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule"));
-	RootComponent = Capsule;
+	SetRootComponent(Capsule);
+	
+	Capsule->InitCapsuleSize(50.f, 96.f);
+	
+	Capsule->SetCollisionProfileName(TEXT("Pawn")); // or CollisionComponent->SetCollisionObjectType(ECC_Pawn);
+	Capsule->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	
+	Capsule->SetCollisionResponseToChannel(ECC_WorldDynamic, ECR_Overlap);
+	Capsule->SetGenerateOverlapEvents(true);
 	
 	// Floating Movement
 	FloatingMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("FloatingMovement"));
