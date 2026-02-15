@@ -1,10 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "HCTButtonBase.generated.h"
+#include "HCT_Button_Base.generated.h"
 
 class UBoxComponent;
 
@@ -12,19 +10,19 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSignatureKhiBatDauOverlap, AActor*,
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSignatureKhiHetOverlap, AActor*, OverlappingActor);
 
 UCLASS()
-class HOICHOTETCUAHUY_API AHCTButtonBase : public AActor
+class HOICHOTETCUAHUY_API AHCT_Button_Base : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AHCTButtonBase();
+	AHCT_Button_Base();
 	
 	UPROPERTY(BlueprintAssignable, Category=HoiChoTet)
-	FSignatureKhiBatDauOverlap BuocChanVaoGianHang;
+	FSignatureKhiBatDauOverlap StartOverlap;
 	
 	UPROPERTY(BlueprintAssignable, Category=HoiChoTet)
-	FSignatureKhiHetOverlap BuocChanRaKhoiGianHang;
+	FSignatureKhiHetOverlap EndOverlap;
 
 protected:
 	// Called when the game starts or when spawned
@@ -35,7 +33,7 @@ protected:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UBoxComponent* CollisionComponent;
-	
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

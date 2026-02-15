@@ -1,21 +1,18 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
-#include "HCTButtonBase.h"
+#include "HCT_Button_Base.h"
 #include "Components/BoxComponent.h"
 
 
 // Sets default values
-AHCTButtonBase::AHCTButtonBase()
+AHCT_Button_Base::AHCT_Button_Base()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
-	// Firstly, create root scene component so that we can still change the box collision relative position
+	// Create Root Scene Component
 	SceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneRoot"));
 	SetRootComponent(SceneRoot); // or RootComponent = SceneRoot;
 	
-	// Create, parent, and configure box collision component
+	// Create Collision
 	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
 	CollisionComponent->SetupAttachment(RootComponent);
 	CollisionComponent->SetBoxExtent(FVector(50.0f, 50.0f, 50.0f));
@@ -27,35 +24,35 @@ AHCTButtonBase::AHCTButtonBase()
 }
 
 // Called when the game starts or when spawned
-void AHCTButtonBase::BeginPlay()
+void AHCT_Button_Base::BeginPlay()
 {
 	Super::BeginPlay();
 	
 	// Bind overlap events
-	CollisionComponent->OnComponentBeginOverlap.AddDynamic(this, &AHCTButtonBase::OnOverlapBegin);
-	CollisionComponent->OnComponentEndOverlap.AddDynamic(this, &AHCTButtonBase::OnOverlapEnd);
+	CollisionComponent->OnComponentBeginOverlap.AddDynamic(this, &AHCT_Button_Base::OnOverlapBegin);
+	CollisionComponent->OnComponentEndOverlap.AddDynamic(this, &AHCT_Button_Base::OnOverlapEnd);
 }
 
 // Called every frame
-void AHCTButtonBase::Tick(const float DeltaTime)
+void AHCT_Button_Base::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
-void AHCTButtonBase::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void AHCT_Button_Base::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (OtherActor && OtherActor != this)
 	{
-		BuocChanVaoGianHang.Broadcast(OtherActor);
+		StartOverlap.Broadcast(OtherActor);
 	}
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
-void AHCTButtonBase::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void AHCT_Button_Base::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	if (OtherActor && OtherActor != this)
 	{
-		BuocChanRaKhoiGianHang.Broadcast(OtherActor);
+		EndOverlap.Broadcast(OtherActor);
 	}
 }
