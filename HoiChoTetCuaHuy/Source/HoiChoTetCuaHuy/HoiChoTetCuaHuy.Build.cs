@@ -16,7 +16,8 @@ public class HoiChoTetCuaHuy : ModuleRules
 				"Engine",
 				"InputCore",
 				"EnhancedInput",
-				"UMG"        
+				"UMG",
+				"Niagara"
 			}
 		);
 
